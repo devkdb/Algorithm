@@ -9,3 +9,16 @@ obj/Debug/netcoreapp3.1/Algorithm.AssemblyInfo.cs
 obj/Debug/netcoreapp3.1/Algorithm.AssemblyInfoInputs.cache
 obj/Debug/netcoreapp3.1/Algorithm.assets.cache
 obj/Debug/netcoreapp3.1/Algorithm.csprojAssemblyReference.cache
+.vs/Algorithm/DesignTimeBuild/.dtbcache.v2
+bin/Debug/netcoreapp3.1/Algorithm.deps.json
+bin/Debug/netcoreapp3.1/Algorithm.dll
+bin/Debug/netcoreapp3.1/Algorithm.exe
+bin/Debug/netcoreapp3.1/Algorithm.pdb
+bin/Debug/netcoreapp3.1/Algorithm.runtimeconfig.dev.json
+bin/Debug/netcoreapp3.1/Algorithm.runtimeconfig.json
+obj/Debug/netcoreapp3.1/Algorithm.csproj.CoreCompileInputs.cache
+obj/Debug/netcoreapp3.1/Algorithm.csproj.FileListAbsolute.txt
+obj/Debug/netcoreapp3.1/Algorithm.dll
+obj/Debug/netcoreapp3.1/Algorithm.genruntimeconfig.cache
+obj/Debug/netcoreapp3.1/Algorithm.pdb
+obj/Debug/netcoreapp3.1/apphost.exe
