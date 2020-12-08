@@ -61,7 +61,6 @@ namespace Algorithm
         // 정보를 어떻게 들고 있을 것인가? 어떤 데이터 타입을 사용할 것인가?
         public int[] _data = new int[25]; // 배열
         public MyList<int> _data2 = new MyList<int>(); // 동적 배열
-        public LinkedList<int> _data3 = new LinkedList<int>(); // 연결 리스트
 
         public void Inittialize()
         {
