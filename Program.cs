@@ -7,16 +7,14 @@ namespace Algorithm
         static void Main(string[] args)
         {
             Board board = new Board();
-            board.Inittialize();
+            board.Inittialize(25);
 
             Console.CursorVisible = false;
 
             const int WAIT_TICK = 1000 / 30;
-            const char CIRCLE = '\u25cf';
-
-            int lastTick = 0;
-            // 게임 실행.
-            while (true)
+            
+            int lastTick = 0;            
+            while (true) // 게임 실행.
             {
                 #region 프레임 관리
                 // FPS 프레임 (60 프레임 OK. 30 프레임 이하로 NO)
@@ -48,17 +46,7 @@ namespace Algorithm
                 // 랜더링. 최종 연산 된 게임 세상을 이쁘게 그려 준다.
 
                 Console.SetCursorPosition(0, 0);
-
-                for(int i = 0; i < 25; i++)
-                {
-                    for (int j = 0; j < 25; j++)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write(CIRCLE);
-                    }
-                    Console.WriteLine();
-                }
-                
+                board.Render();
             }
         }
     }
