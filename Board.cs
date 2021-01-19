@@ -56,6 +56,7 @@ namespace Algorithm
     }
 
     // Map. 대부분 고정. 게임 도중에 사이즈가 늘었다 줄었다 안한다.
+    // 타일, 맵 초기화, 랜더, 등등.. 맵에 관한 모든것.
     class Board
     {
         #region 동적 배열 연구
@@ -91,10 +92,11 @@ namespace Algorithm
             _tile = new TileType[size, size];
             _size = size;
 
-            for (int y = 0; y < _size; y++)
+            for (int y = 0; y < _size; y++) // y 좌표를 돌고
             {
-                for ( int x = 0; x < _size; x++)
+                for ( int x = 0; x < _size; x++) // y 좌표 마다 x 좌표를 돈다.
                 {
+                    // 외곽 부분일 경우, 벽으로 만든다.
                     if (x == 0 || x == _size - 1 || y == 0 || y == _size - 1)
                     {
                         _tile[y, x] = TileType.Wall;
