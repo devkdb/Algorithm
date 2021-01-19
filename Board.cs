@@ -96,10 +96,10 @@ namespace Algorithm
             _size = size;
 
             // Mazes for Programmers. 미로에 관련된 재밌는 책.
-
-            GenerateByBinaryTree();
+            // GenerateByBinaryTree();
+            GenerateBySideWinder();
         }
-        void GenerateByBinaryTree() // 첫번째 미로 생성 알고리즘.
+        void GenerateByBinaryTree() // BinaryTree. 첫번째 미로 생성 알고리즘.
         {
             // 일단 길을 다 막아버리는 작업.
             for (int y = 0; y < _size; y++) // y 좌표를 돌고
@@ -123,13 +123,14 @@ namespace Algorithm
             {
                 for (int x = 0; x < _size; x++)
                 {
+                    // 아무 작업도 안함.  초록색 점에서만 실행.
                     if (x % 2 == 0 || y % 2 == 0)
-                        continue; // 아무 작업도 안함.  초록색 점에서만 실행.
-
-                    if (x == _size - 2 && y == _size - 2)
                         continue;
 
                     // 맨 외곽 벽에 구멍 안뚫리게.
+                    if (x == _size - 2 && y == _size - 2)
+                        continue;
+                    
                     if (y == _size - 2)
                     {
                         _tile[y, x + 1] = TileType.Empty;
@@ -150,6 +151,68 @@ namespace Algorithm
                     else
                     {
                         _tile[y + 1, x] = TileType.Empty;
+                    }
+                }
+            }
+        }
+        void GenerateBySideWinder()
+        {
+            // 일단 길을 다 막아버리는 작업.
+            for (int y = 0; y < _size; y++) // y 좌표를 돌고
+            {
+                for (int x = 0; x < _size; x++) // y 좌표 마다 x 좌표를 돈다.
+                {
+                    // if (x == 0 || x == _size - 1 || y == 0 || y == _size - 1) // 외곽 부분일 경우, 벽으로 만든다.
+                    if (x % 2 == 0 || y % 2 == 0) // 짝수인 경우.
+                    {
+                        _tile[y, x] = TileType.Wall;
+                    }
+                    else
+                        _tile[y, x] = TileType.Empty;
+                }
+            }
+
+            // 랜덤으로 우측 혹은 아래로 길을 뚫는 작업.
+            // Binary Tree Algorithm
+            Random rand = new Random();
+            for (int y = 0; y < _size; y++)
+            {
+                int count = 1;
+
+                for (int x = 0; x < _size; x++)
+                {
+                    // 아무 작업도 안함.  초록색 점에서만 실행.
+                    if (x % 2 == 0 || y % 2 == 0)
+                        continue;
+
+                    // 맨 외곽 벽에 구멍 안뚫리게.
+                    if (x == _size - 2 && y == _size - 2)
+                        continue;
+
+                    if (y == _size - 2)
+                    {
+                        _tile[y, x + 1] = TileType.Empty;
+                        continue;
+                    }
+
+                    if (x == _size - 2)
+                    {
+                        _tile[y + 1, x] = TileType.Empty;
+                        continue;
+                    }
+
+                    if (rand.Next(0, 2) == 0) // 오른쪽으로 한칸 전진.
+                    {
+                        _tile[y, x + 1] = TileType.Empty;
+                        count++;
+                    }
+                    else // 아래로 전진할때
+                    {
+                        // 오른쪽으로 전진할때 마다 저장한 카운트 값 중에서 랜덤으로 하나 선택해서
+                        // 아래로 전진한다. 2칸당 카운트 1.  짝수는 벽.
+                        int randomIndex = rand.Next(0, count);
+                        _tile[y + 1, x - randomIndex * 2] = TileType.Empty;
+                        count = 1;
                     }
                 }
             }
